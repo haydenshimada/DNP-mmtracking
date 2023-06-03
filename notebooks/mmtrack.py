@@ -7,12 +7,12 @@ from collections import defaultdict
 from mmtrack.apis import inference_mot, init_model
 
 def main():
-    input_folder = "../data/DNP/video/"
-    output_ano = "../output/DNP/anotations/"
-    output_vid = "../output/DNP/videos/"
+    input_folder = "data/DNP/video/"
+    output_ano = "output/DNP/anotations/"
+    output_vid = "output/DNP/videos/"
 
-    mot_config = '../configs/mot/bytetrack/bytetrack_yolox_x_crowdhuman_mot17-private-half.py'
-    mot_checkpoint = '../checkpoints/bytetrack/bytetrack_yolox_x_crowdhuman_mot17-private-half_20211218_205500-1985c9f0.pth'
+    mot_config = 'configs/mot/bytetrack/bytetrack_yolox_x_crowdhuman_mot17-private-half.py'
+    mot_checkpoint = 'checkpoints/bytetrack/bytetrack_yolox_x_crowdhuman_mot17-private-half_20211218_205500-1985c9f0.pth'
     mot_model = init_model(mot_config, mot_checkpoint, device='cuda:0')
 
     for input_file in os.listdir(input_folder):

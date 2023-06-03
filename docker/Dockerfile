@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 git ninja-build 
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# install libraries
 RUN pip install -U openmim
 RUN mim install mmengine
 
@@ -34,9 +35,13 @@ RUN pip install -r requirements/build.txt
 RUN pip install -v -e .
 
 # Download dataset
-RUN pip install gdown
-RUN mkdir -p data \ mkdir -p DNP \
-    && cd data/DNP \
-    && gdown --folder https://drive.google.com/drive/folders/1JQDP9OmNKJW6yDp6GL76CXppVrqV54un \
-    && gdown --folder https://drive.google.com/drive/folders/12M665lz9cNw9Iy52-zD6cOU-o7q-EY9u \
-    && cd ../..
+RUN pip install --upgrade --no-cache-dir gdown
+RUN mkdir -p /mmtracking/data && mkdir -p /mmtracking/data/DNP 
+WORKDIR /mmtracking/data/DNP
+# video
+RUN gdown --folder https://drive.google.com/drive/folders/11fp02Dx3auXKb1u4bqVVXb2ddEhKF2Un 
+# gt-reid
+# RUN gdown --folder https://drive.google.com/drive/folders/13WseUQKqw5F9VwzQ7Th4dYSzFsycykAP
+WORKDIR /mmtracking
+
+RUN python notebooks/mmtrack.py
