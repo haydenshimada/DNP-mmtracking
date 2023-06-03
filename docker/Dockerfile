@@ -3,6 +3,8 @@ ARG CUDA="10.1"
 ARG CUDNN="7"
 ARG MM="2.8.0"
 
+FROM nvidia/cuda:10.1-cudnn7-devel-rockylinux8 
+
 FROM pytorch/pytorch:${PYTORCH}-cuda${CUDA}-cudnn${CUDNN}-devel
 
 ENV TORCH_CUDA_ARCH_LIST="6.0 6.1 7.0+PTX"
@@ -17,13 +19,24 @@ RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 git ninja-build 
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.6.0/index.html
-RUN pip install mmdet
+RUN pip install -U openmim
+RUN mim install mmengine
+
+RUN mim install "mmcv>=1.3.17, <2.0.0"
+RUN mim install "mmdet>=2.19.1, <3.0.0"
 
 RUN conda clean --all
 ENV FORCE_CUDA="1"
 
-RUN git clone https://github.com/open-mmlab/mmtracking.git /mmtracking
+RUN git clone https://github.com/haydenshimada/DNP-mmtracking /mmtracking
 WORKDIR /mmtracking
 RUN pip install -r requirements/build.txt
 RUN pip install -v -e .
+
+# Download dataset
+RUN pip install gdown
+RUN mkdir -p data \ mkdir -p DNP \
+    && cd data/DNP \
+    && gdown --folder https://drive.google.com/drive/folders/1JQDP9OmNKJW6yDp6GL76CXppVrqV54un \
+    && gdown --folder https://drive.google.com/drive/folders/12M665lz9cNw9Iy52-zD6cOU-o7q-EY9u \
+    && cd ../..
