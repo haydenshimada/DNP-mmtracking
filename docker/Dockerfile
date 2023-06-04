@@ -50,8 +50,8 @@ RUN mkdir -p /mmtracking/checkpoints && mkdir -p /mmtracking/checkpoints/bytetra
 RUN wget -c https://download.openmmlab.com/mmtracking/mot/bytetrack/bytetrack_yolox_x/bytetrack_yolox_x_crowdhuman_mot17-private-half_20211218_205500-1985c9f0.pth -P ./checkpoints/bytetrack
 
 # Run code
-RUN python notebooks/tracker.py
-RUN pyhon notebooks/toTXT.py
+# RUN python notebooks/tracker.py
+# RUN pyhon notebooks/toTXT.py
 
-RUN git commit -m "Run with docker"
-RUN git push origin master
+# RUN git commit -m "Run with docker"
+# RUN git push origin master
