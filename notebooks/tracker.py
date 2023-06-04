@@ -18,43 +18,43 @@ def main():
     for input_file in os.listdir(input_folder):
         print(f"==========={input_file}==========")
 
-    input_video = osp.join(input_folder, input_file)
-    input_file = input_file.split(".")[0]
+        input_video = osp.join(input_folder, input_file)
+        input_file = input_file.split(".")[0]
+        
+        imgs = mmcv.VideoReader(input_video)
 
-    imgs = mmcv.VideoReader(input_video)
+        # build the model from a config file
+        
+        prog_bar = mmcv.ProgressBar(len(imgs))
+        out_dir = tempfile.TemporaryDirectory()
+        out_path = out_dir.name
 
-    # build the model from a config file
+        pred_file = osp.join(output_ano, input_file + ".json")
+        output = osp.join(output_vid, input_file + ".mp4")
 
-    prog_bar = mmcv.ProgressBar(len(imgs))
-    out_dir = tempfile.TemporaryDirectory()
-    out_path = out_dir.name
+        out_data = defaultdict(list)
 
-    pred_file = osp.join(output_ano, input_file + ".json")
-    output = osp.join(output_vid, input_file + ".mp4")
+        # test and show/save the images
+        for i, img in enumerate(imgs):
+                result = inference_mot(mot_model, img, frame_id=i)
+                out_data[i].append(result)
+                mot_model.show_result(
+                        img,
+                        result,
+                        show=False,
+                        wait_time=int(1000. / imgs.fps),
+                        out_file=f'{out_path}/{i:06d}.jpg')
+                prog_bar.update()
 
-    out_data = defaultdict(list)
+        # print out pred in json format
+        mmcv.dump(out_data, pred_file)
 
-    # test and show/save the images
-    for i, img in enumerate(imgs):
-            result = inference_mot(mot_model, img, frame_id=i)
-            out_data[i].append(result)
-            mot_model.show_result(
-                    img,
-                    result,
-                    show=False,
-                    wait_time=int(1000. / imgs.fps),
-                    out_file=f'{out_path}/{i:06d}.jpg')
-            prog_bar.update()
-
-    # print out pred in json format
-    mmcv.dump(out_data, pred_file)
-
-
-    print(f'\n making the output video at {output} with a FPS of {imgs.fps}')
-    mmcv.frames2video(out_path, output, fps=imgs.fps, fourcc='mp4v')
-    out_dir.cleanup()
-
-    print()
+        
+        print(f'\n making the output video at {output} with a FPS of {imgs.fps}')
+        mmcv.frames2video(out_path, output, fps=imgs.fps, fourcc='mp4v')
+        out_dir.cleanup()
+        
+        print()
 
 if __name__ == "__main__":
      main()

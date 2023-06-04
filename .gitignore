@@ -106,6 +106,7 @@ venv.bak/
 
 data
 output/DNP/videos
+checkpoints
 ckpts
 .vscode
 .idea
