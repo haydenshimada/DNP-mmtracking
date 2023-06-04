@@ -15,7 +15,7 @@ ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
 
-RUN apt-get update && apt-get install -y wget \
+RUN apt-get update \
     && apt-get install -y ffmpeg libsm6 libxext6 git ninja-build libglib2.0-0 libsm6 libxrender-dev libxext6 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -40,9 +40,13 @@ RUN pip install --upgrade --no-cache-dir gdown
 RUN mkdir -p /mmtracking/data && mkdir -p /mmtracking/data/DNP 
 WORKDIR /mmtracking/data/DNP
 # video
-RUN wget --no-check-certificate --load-cookies /tmp/cookies.txt "https://drive.google.com/uc?export=download&confirm=true$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://drive.google.com/uc?export=download&id=1JQDP9OmNKJW6yDp6GL76CXppVrqV54un' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1JQDP9OmNKJW6yDp6GL76CXppVrqV54un" -O FILENAME && rm -rf /tmp/cookies.txt
+RUN gdown --folder https://drive.google.com/drive/folders/11fp02Dx3auXKb1u4bqVVXb2ddEhKF2Un?usp
 # gt-reid
 # RUN gdown --folder https://drive.google.com/drive/folders/13WseUQKqw5F9VwzQ7Th4dYSzFsycykAP
 WORKDIR /mmtracking
 
 RUN python notebooks/tracker.py
+RUN pyhon notebooks/toTXT.py
+
+RUN git commit -m "Run with docker"
+RUN git push origin master
