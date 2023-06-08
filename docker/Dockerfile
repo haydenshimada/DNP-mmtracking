@@ -48,7 +48,7 @@ WORKDIR /mmtracking
 # Download checkpoint
 RUN mkdir -p /mmtracking/checkpoints
 
-# # Run code
+# Run code
 # RUN python notebooks/tracker.py
 # RUN pyhon notebooks/toTXT.py
 
