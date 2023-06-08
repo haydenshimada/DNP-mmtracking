@@ -55,6 +55,7 @@ def main():
     file = open('output/DNP/time.txt', mode='w')
 
     for input_file in sorted(os.listdir(input_folder)):
+        print(f"==========={input_file}==========\n")
         file.write(f"==========={input_file}==========\n")
 
         input_video = osp.join(input_folder, input_file)
@@ -95,7 +96,7 @@ def main():
         end_time = time.time()
         file.write("Create json anotations: %s seconds\n" % (end_time - start_time))
         
-        # file.write(f'Making the output video at {output} with a FPS of {imgs.fps}\n')
+        print(f'\nMaking the output video at {output} with a FPS of {imgs.fps}\n')
         start_time = time.time()
         mmcv.frames2video(out_path, output, fps=imgs.fps, fourcc='mp4v')
         end_time = time.time()
@@ -104,6 +105,8 @@ def main():
         out_dir.cleanup()
 
         file.write('\n')
+        print()
+        
     file.close()
 
 if __name__ == "__main__":
