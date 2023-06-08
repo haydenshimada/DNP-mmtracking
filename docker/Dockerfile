@@ -46,8 +46,7 @@ RUN gdown --folder https://drive.google.com/drive/folders/11fp02Dx3auXKb1u4bqVVX
 WORKDIR /mmtracking
 
 # Download checkpoint
-RUN mkdir -p /mmtracking/checkpoints && mkdir -p /mmtracking/checkpoints/bytetrack
-RUN wget -c https://download.openmmlab.com/mmtracking/mot/bytetrack/bytetrack_yolox_x/bytetrack_yolox_x_crowdhuman_mot17-private-half_20211218_205500-1985c9f0.pth -P ./checkpoints/bytetrack
+RUN mkdir -p /mmtracking/checkpoints
 
 # # Run code
 # RUN python notebooks/tracker.py
