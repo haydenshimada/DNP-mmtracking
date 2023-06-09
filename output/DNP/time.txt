@@ -1,2 +1,174 @@
 ===========output000.mp4==========
 Video's FPS: 25.0
+Tracking time: 335.3526659011841 seconds
+Create json anotations: 0.21079111099243164 seconds
+Create output video: 36.78359508514404 seconds
+
+===========output001.mp4==========
+Video's FPS: 25.0
+Tracking time: 331.6135063171387 seconds
+Create json anotations: 0.16942191123962402 seconds
+Create output video: 36.362014055252075 seconds
+
+===========output002.mp4==========
+Video's FPS: 25.0
+Tracking time: 342.3787488937378 seconds
+Create json anotations: 0.2893404960632324 seconds
+Create output video: 36.564942836761475 seconds
+
+===========output003.mp4==========
+Video's FPS: 25.0
+Tracking time: 343.23593258857727 seconds
+Create json anotations: 0.31691932678222656 seconds
+Create output video: 36.69481897354126 seconds
+
+===========output004.mp4==========
+Video's FPS: 25.0
+Tracking time: 337.03084897994995 seconds
+Create json anotations: 0.2426128387451172 seconds
+Create output video: 36.64634132385254 seconds
+
+===========output005.mp4==========
+Video's FPS: 25.0
+Tracking time: 328.2098877429962 seconds
+Create json anotations: 0.12913942337036133 seconds
+Create output video: 36.4542772769928 seconds
+
+===========output006.mp4==========
+Video's FPS: 25.0
+Tracking time: 329.2251012325287 seconds
+Create json anotations: 0.1211402416229248 seconds
+Create output video: 36.32898163795471 seconds
+
+===========output007.mp4==========
+Video's FPS: 25.0
+Tracking time: 327.7555868625641 seconds
+Create json anotations: 0.12500357627868652 seconds
+Create output video: 36.21375370025635 seconds
+
+===========output008.mp4==========
+Video's FPS: 25.0
+Tracking time: 328.3927221298218 seconds
+Create json anotations: 0.1273176670074463 seconds
+Create output video: 36.18313956260681 seconds
+
+===========output009.mp4==========
+Video's FPS: 25.0
+Tracking time: 327.0455012321472 seconds
+Create json anotations: 0.10729050636291504 seconds
+Create output video: 36.19406819343567 seconds
+
+===========output010.mp4==========
+Video's FPS: 25.0
+Tracking time: 329.4029538631439 seconds
+Create json anotations: 0.17006659507751465 seconds
+Create output video: 36.19538164138794 seconds
+
+===========output011.mp4==========
+Video's FPS: 25.0
+Tracking time: 332.3118634223938 seconds
+Create json anotations: 0.18322968482971191 seconds
+Create output video: 36.25727868080139 seconds
+
+===========output012.mp4==========
+Video's FPS: 25.0
+Tracking time: 330.97865056991577 seconds
+Create json anotations: 0.15250897407531738 seconds
+Create output video: 36.221184968948364 seconds
+
+===========output013.mp4==========
+Video's FPS: 25.0
+Tracking time: 331.13317489624023 seconds
+Create json anotations: 0.17290925979614258 seconds
+Create output video: 36.399969816207886 seconds
+
+===========output014.mp4==========
+Video's FPS: 25.0
+Tracking time: 335.1958854198456 seconds
+Create json anotations: 0.19371342658996582 seconds
+Create output video: 36.89188838005066 seconds
+
+===========output015.mp4==========
+Video's FPS: 25.0
+Tracking time: 332.04426074028015 seconds
+Create json anotations: 0.1693723201751709 seconds
+Create output video: 37.35410451889038 seconds
+
+===========output016.mp4==========
+Video's FPS: 25.0
+Tracking time: 335.3910005092621 seconds
+Create json anotations: 0.21325445175170898 seconds
+Create output video: 36.982513666152954 seconds
+
+===========output017.mp4==========
+Video's FPS: 25.0
+Tracking time: 335.8391366004944 seconds
+Create json anotations: 0.20381546020507812 seconds
+Create output video: 36.4303982257843 seconds
+
+===========output018.mp4==========
+Video's FPS: 25.0
+Tracking time: 332.69834065437317 seconds
+Create json anotations: 0.17254924774169922 seconds
+Create output video: 36.236706256866455 seconds
+
+===========output019.mp4==========
+Video's FPS: 25.0
+Tracking time: 334.88236141204834 seconds
+Create json anotations: 0.2064805030822754 seconds
+Create output video: 36.27594327926636 seconds
+
+===========output020.mp4==========
+Video's FPS: 25.0
+Tracking time: 332.23172879219055 seconds
+Create json anotations: 0.2096717357635498 seconds
+Create output video: 36.2433602809906 seconds
+
+===========output021.mp4==========
+Video's FPS: 25.0
+Tracking time: 332.5794110298157 seconds
+Create json anotations: 0.2595829963684082 seconds
+Create output video: 36.41950845718384 seconds
+
+===========output022.mp4==========
+Video's FPS: 25.0
+Tracking time: 337.8442077636719 seconds
+Create json anotations: 0.3596475124359131 seconds
+Create output video: 36.652353048324585 seconds
+
+===========output023.mp4==========
+Video's FPS: 25.0
+Tracking time: 334.6224603652954 seconds
+Create json anotations: 0.3183577060699463 seconds
+Create output video: 36.685354232788086 seconds
+
+===========output024.mp4==========
+Video's FPS: 25.0
+Tracking time: 336.99289751052856 seconds
+Create json anotations: 0.35256242752075195 seconds
+Create output video: 36.62459349632263 seconds
+
+===========output025.mp4==========
+Video's FPS: 25.0
+Tracking time: 335.18328762054443 seconds
+Create json anotations: 0.3252120018005371 seconds
+Create output video: 36.479329109191895 seconds
+
+===========output026.mp4==========
+Video's FPS: 25.0
+Tracking time: 337.9128098487854 seconds
+Create json anotations: 0.35773754119873047 seconds
+Create output video: 36.72494864463806 seconds
+
+===========output027.mp4==========
+Video's FPS: 25.0
+Tracking time: 339.1339030265808 seconds
+Create json anotations: 0.35173487663269043 seconds
+Create output video: 36.966801166534424 seconds
+
+===========output028.mp4==========
+Video's FPS: 25.0
+Tracking time: 339.89872097969055 seconds
+Create json anotations: 0.3618049621582031 seconds
+Create output video: 36.82577180862427 seconds
+
