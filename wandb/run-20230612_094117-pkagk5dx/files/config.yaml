@@ -1,0 +1,48 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.14.0
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.9.16
+    start_time: 1686537677.821269
+    t:
+      1:
+      - 1
+      - 5
+      - 37
+      - 38
+      - 41
+      - 53
+      - 55
+      - 62
+      - 80
+      2:
+      - 1
+      - 5
+      - 37
+      - 38
+      - 41
+      - 53
+      - 55
+      - 62
+      - 80
+      3:
+      - 16
+      - 23
+      4: 3.9.16
+      5: 0.14.0
+      8:
+      - 5
+algorithm:
+  desc: null
+  value: bytetrack
+checkpoint:
+  desc: null
+  value: bytetrack_yolox_x_crowdhuman_mot17-private-half_20211218_205500-1985c9f0.pth
+config:
+  desc: null
+  value: bytetrack_yolox_x_crowdhuman_mot17-private-half.py

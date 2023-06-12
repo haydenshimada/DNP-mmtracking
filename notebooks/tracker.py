@@ -51,6 +51,8 @@ def main():
         print("Downdloading checkpoint ...")
         runcmd(f"wget -c {args.checkpoint} -P ./checkpoints")
         print("Finished")
+    else:
+         print("Checkpoint is downloaded")
 
     mot_model = init_model(mot_config, mot_checkpoint, device='cuda:0')
 
@@ -66,6 +68,9 @@ def main():
             "config": mot_config.split("/")[-1],
             "checkpoint": args.checkpoint.split('/')[-1]
     })
+
+    print("Detect Classes:", mot_model.CLASSES)
+    print()
 
     for input_file in sorted(os.listdir(input_folder)):
         print(f"==========={input_file}==========\n")
@@ -117,7 +122,7 @@ def main():
         start_time = time.time()
         mmcv.dump(out_data, pred_file)
         end_time = time.time()
-        
+
         json_time = end_time - start_time
         file.write("Create json anotations: %s seconds\n" % (json_time))
         

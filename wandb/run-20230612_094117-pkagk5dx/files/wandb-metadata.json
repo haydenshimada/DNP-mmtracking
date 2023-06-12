@@ -1,0 +1,110 @@
+{
+    "os": "Linux-5.15.90.1-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+    "python": "3.9.16",
+    "heartbeatAt": "2023-06-12T02:41:19.120976",
+    "startedAt": "2023-06-12T02:41:17.814543",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "-config",
+        "configs/mot/bytetrack/bytetrack_yolox_x_crowdhuman_mot17-private-half.py",
+        "-checkpoint",
+        "https://download.openmmlab.com/mmtracking/mot/bytetrack/bytetrack_yolox_x/bytetrack_yolox_x_crowdhuman_mot17-private-half_20211218_205500-1985c9f0.pth"
+    ],
+    "state": "running",
+    "program": "/home/hayade/project/mmtracking/notebooks/tracker.py",
+    "codePath": "notebooks/tracker.py",
+    "git": {
+        "remote": "https://github.com/haydenshimada/DNP-mmtracking.git",
+        "commit": "b6f5a826ee70fd9cb3ce257b550df83dc2973d7c"
+    },
+    "email": "nguyendanghuynh1804@gmail.com",
+    "root": "/home/hayade/project/mmtracking",
+    "host": "HaydenPredator",
+    "username": "hayade",
+    "executable": "/home/hayade/software/anaconda3/envs/myenv/bin/python",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2592.002,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2592.002,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "total": 250.92389297485352,
+        "used": 112.02256393432617
+    },
+    "gpu": "NVIDIA GeForce RTX 2060",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 2060",
+            "memory_total": 6442450944
+        }
+    ],
+    "memory": {
+        "total": 7.674907684326172
+    }
+}
