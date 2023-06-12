@@ -62,9 +62,12 @@ def main():
     run = wandb.init(
         # Set the project where this run will be logged
         project="DNP-mmtracking",
+
+        # Run name
+        name=args.config.split("/")[2],
+
         # Track hyperparameters and run metadata
         config={
-             "algorithm": args.config.split("/")[2],
             "config": mot_config.split("/")[-1],
             "checkpoint": args.checkpoint.split('/')[-1]
     })
