@@ -108,6 +108,7 @@ data
 output/DNP/videos
 checkpoints
 ckpts
+wandb
 .vscode
 .idea
 .DS_Store
