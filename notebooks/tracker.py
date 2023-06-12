@@ -10,6 +10,8 @@ import tempfile
 from collections import defaultdict
 from mmtrack.apis import inference_mot, init_model
 
+import wandb
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Run mmtracking')
     parser.add_argument('-config', help='path to config file', default=None)
@@ -53,6 +55,17 @@ def main():
     mot_model = init_model(mot_config, mot_checkpoint, device='cuda:0')
 
     file = open('output/DNP/time.txt', mode='w')
+    wandb.login()
+
+    run = wandb.init(
+        # Set the project where this run will be logged
+        project="DNP-mmtracking",
+        # Track hyperparameters and run metadata
+        config={
+             "algorithm": args.config.split("/")[2],
+            "config": mot_config.split("/")[-1],
+            "checkpoint": args.checkpoint.split('/')[-1]
+    })
 
     for input_file in sorted(os.listdir(input_folder)):
         print(f"==========={input_file}==========\n")
@@ -75,10 +88,16 @@ def main():
 
         out_data = defaultdict(list)
 
+        average_fps = 0
+        
         start_time = time.time()
         # test and show/save the images
         for i, img in enumerate(imgs):
+                start_frame = time.time()
                 result = inference_mot(mot_model, img, frame_id=i)
+                end_frame = time.time()
+                average_fps += end_frame - start_frame
+
                 out_data[i].append(result)
                 mot_model.show_result(
                                 img,
@@ -88,24 +107,39 @@ def main():
                                 out_file=f'{out_path}/{i:06d}.jpg')
                 prog_bar.update()
         end_time = time.time()
-        file.write("Tracking time: %s seconds\n" % (end_time - start_time))
+
+        tracking_time = end_time - start_time
+        file.write("Tracking time: %s seconds\n" % (tracking_time))
+        average_fps = average_fps / len(imgs)
+        file.write("Average FPS: %s seconds \n" % (average_fps))
 
         # print out pred in json format
         start_time = time.time()
         mmcv.dump(out_data, pred_file)
         end_time = time.time()
-        file.write("Create json anotations: %s seconds\n" % (end_time - start_time))
+        
+        json_time = end_time - start_time
+        file.write("Create json anotations: %s seconds\n" % (json_time))
         
         print(f'\nMaking the output video at {output} with a FPS of {imgs.fps}\n')
         start_time = time.time()
         mmcv.frames2video(out_path, output, fps=imgs.fps, fourcc='mp4v')
         end_time = time.time()
-        file.write("Create output video: %s seconds\n" % (end_time - start_time))
+
+        video_time = end_time - start_time
+        file.write("Create output video: %s seconds\n" % (video_time))
 
         out_dir.cleanup()
 
         file.write('\n')
         print()
+
+        wandb.log({
+            "Tracking time": tracking_time,
+            "Average FPS": average_fps,
+            "Create json anotations": json_time,
+            "Create output video": video_time
+        })
         
     file.close()
 
