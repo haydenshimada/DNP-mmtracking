@@ -63,11 +63,9 @@ def main():
         # Set the project where this run will be logged
         project="DNP-mmtracking",
 
-        # Run name
-        name=args.config.split("/")[2],
-
         # Track hyperparameters and run metadata
         config={
+            "algorithm": args.config.split("/")[2],
             "config": mot_config.split("/")[-1],
             "checkpoint": args.checkpoint.split('/')[-1]
     })
@@ -83,7 +81,6 @@ def main():
         input_file = input_file.split(".")[0]
         
         imgs = mmcv.VideoReader(input_video)
-        file.write(f"Video's FPS: {imgs.fps}\n")
 
         # build the model from a config file
         
@@ -96,7 +93,7 @@ def main():
 
         out_data = defaultdict(list)
 
-        average_fps = 0
+        time_per_frame = 0
         
         start_time = time.time()
         # test and show/save the images
@@ -104,7 +101,7 @@ def main():
                 start_frame = time.time()
                 result = inference_mot(mot_model, img, frame_id=i)
                 end_frame = time.time()
-                average_fps += end_frame - start_frame
+                time_per_frame += end_frame - start_frame
 
                 out_data[i].append(result)
                 mot_model.show_result(
@@ -116,10 +113,10 @@ def main():
                 prog_bar.update()
         end_time = time.time()
 
-        tracking_time = end_time - start_time
-        file.write("Tracking time: %s seconds\n" % (tracking_time))
-        average_fps = average_fps / len(imgs)
-        file.write("Average FPS: %s seconds \n" % (average_fps))
+        fps = len(imgs) / (end_time - start_time)
+        file.write("Average FPS: %s seconds\n" % (fps))
+        time_per_frame = time_per_frame / len(imgs)
+        file.write("Time per Frame: %s seconds \n" % (time_per_frame))
 
         # print out pred in json format
         start_time = time.time()
@@ -143,8 +140,8 @@ def main():
         print()
 
         wandb.log({
-            "Tracking time": tracking_time,
-            "Average FPS": average_fps,
+            "Average FPS": fps,
+            "Time per Frame": time_per_frame,
             "Create json anotations": json_time,
             "Create output video": video_time
         })
